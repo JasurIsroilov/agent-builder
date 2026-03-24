@@ -84,7 +84,7 @@ OPENAI_API_KEY=your_openai_api_key_here
 
 3. **Install MCP Weather Server** (optional, for weather agent):
 ```bash
-pip install mcp-weather
+pip install mcp-weather-server
 ```
 
 ## Running the System

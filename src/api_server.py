@@ -16,6 +16,8 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from dotenv import load_dotenv
 
+
+
 # Add src to Python path for imports
 sys.path.insert(0, os.path.dirname(__file__))
 
@@ -25,14 +27,16 @@ logging.getLogger("mcp-weather").setLevel(logging.WARNING)
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("mcp.server.lowlevel.server").setLevel(logging.WARNING)
 
+
+# Load environment variables from .env file
+load_dotenv()
+
 from core.supervisor import SupervisorWorkflow
 from core.agent_registry import AgentRegistry
 
 # Import agents to trigger registration
 import agents
 
-# Load environment variables
-load_dotenv()
 
 # Initialize FastAPI app
 app = FastAPI(
