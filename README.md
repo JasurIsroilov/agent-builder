@@ -52,14 +52,6 @@ The system follows a supervisor-agent pattern where a central supervisor routes 
                                     └──────────────┘
 ```
 
-### Key Components:
-
-- **Frontend**: Single-page application with streaming chat interface
-- **Backend**: FastAPI server with streaming endpoints
-- **Supervisor**: LangGraph workflow for intelligent routing
-- **Agents**: Specialized agents with unique capabilities
-- **MCP Integration**: External tool servers via Model Context Protocol
-- **Agent Registry**: Automatic agent discovery and registration
 
 ## Installation
 
@@ -67,7 +59,6 @@ The system follows a supervisor-agent pattern where a central supervisor routes 
 
 - Python 3.8+
 - OpenAI API key
-- Modern web browser
 
 ### Setup
 
@@ -182,24 +173,7 @@ Provides weather information via MCP server integration (demonstrates external t
 
 **Capabilities**: Dynamically loaded from MCP server (current weather, forecasts, air quality, timezone info, etc.)
 
-## Features
 
-- ✅ **Intelligent Routing**: Supervisor automatically selects the best agent
-- ✅ **Real-time Streaming**: Responses stream word-by-word to the frontend
-- ✅ **Conversation Memory**: Maintains context across multiple messages
-- ✅ **Markdown Support**: Rich text formatting in responses
-- ✅ **MCP Integration**: Connect to external tool servers
-- ✅ **Modular Design**: Easy to add new agents
-- ✅ **Modern UI**: Clean, responsive web interface with dark mode
-- ✅ **Agent Status**: Visual indicators show which agent is active
-
-## Tech Stack
-
-- **Backend**: FastAPI, LangChain, LangGraph, OpenAI
-- **Frontend**: Vanilla JavaScript, HTML5, CSS3, Marked.js
-- **Streaming**: Plain text streaming (StreamingResponse)
-- **MCP**: Model Context Protocol for external tools
-- **State Management**: LangGraph MemorySaver for conversation history
 
 ---
 
