@@ -76,3 +76,5 @@ name.txt
 docs/
 set_envs.sh
 .claude
+
+!requirements.txt
