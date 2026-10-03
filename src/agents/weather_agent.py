@@ -30,7 +30,7 @@ class WeatherAgent(BaseAgent):
 
     def __init__(self):
         """Initialize the Weather Agent with MCP client."""
-        self.llm = ChatOpenAI(model="gpt-4o", temperature=0)
+        self.llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
 
         # Configure Python MCP weather server
         # Server is started with: python -m mcp_weather_server

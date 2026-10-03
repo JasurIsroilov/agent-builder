@@ -9,5 +9,6 @@ Add new agent files here and they will be automatically discovered.
 from .file_operations_agent import FileOperationsAgent
 from .research_agent import ResearchAgent
 from .weather_agent import WeatherAgent
+from .airplane_trackes_agent import AirplaneTrackerAgent
 
-__all__ = ["FileOperationsAgent", "ResearchAgent", "WeatherAgent"]
+__all__ = ["FileOperationsAgent", "ResearchAgent", "WeatherAgent", "AirplaneTrackerAgent"]

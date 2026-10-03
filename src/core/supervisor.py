@@ -26,7 +26,7 @@ class SupervisorWorkflow:
     4. Returns the result
     """
 
-    def __init__(self, model: str = "gpt-4o"):
+    def __init__(self, model: str = "gpt-4o-mini"):
         """
         Initialize the supervisor workflow.
 

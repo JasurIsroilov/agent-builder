@@ -1,26 +1,31 @@
 """
-Research Agent
+AirplaneTracker Agent
 
-This agent handles research tasks including web searches, content summarization,
-information extraction, and topic analysis.
+This agent tracks airplanes
 """
 
-from typing import List, Dict, Any
+from typing import Any, Dict, List
+
 from langchain.tools import BaseTool
 from langchain_openai import ChatOpenAI
 
 from core.base_agent import BaseAgent
 from core.agent_registry import AgentRegistry
-from tools.research_tools import web_search, summarize_content, extract_information, analyze_topic
+from tools.airplane_tracker_tools import (
+    get_aircraft_location,
+    get_flights_by_aircraft,
+    parse_human_date_to_timestamp
+)
 
 
 @AgentRegistry.register
-class ResearchAgent(BaseAgent):
-    """
-    Agent specialized in research and information gathering.
+class AirplaneTrackerAgent(BaseAgent):
 
-    This agent can perform web searches, summarize content, extract information,
-    and analyze topics. It's useful for research-related tasks.
+    """
+    Agent specialized in tracking airplanes
+
+    This agent can perform airplane tracking including get_aircraft_location,
+    get departure list for the given airplane by get_flights_by_aircraft
     """
 
     def __init__(self):
@@ -31,33 +36,35 @@ class ResearchAgent(BaseAgent):
 
     @property
     def name(self) -> str:
-        """Return the agent's unique name."""
-        return "research"
+        """Returns agent's unqiue name"""
+        return "airplane_tracker"
 
     @property
     def description(self) -> str:
-        """Return the agent's description."""
+        """
+        Returns agent's description
+        """
         return (
-            "Handles research tasks including web searches, content summarization, "
-            "information extraction, and topic analysis. Use this agent when the user "
-            "wants to research topics, find information, or analyze content."
+            "Handles airplane tracking tasks such as " \
+            "defining airplanes location"
         )
 
     @property
     def capabilities(self) -> List[str]:
-        """Return the agent's capabilities."""
+        """
+        Returns agent's capabilities.
+        """
         return [
-            "web search",
-            "content summarization",
-            "information extraction",
-            "topic analysis",
-            "research tasks",
-            "information gathering"
+            "get_aircraft_location",
+            "get_flights_by_aircraft",
+            "parse_human_date_to_timestamp"
         ]
 
     def get_tools(self) -> List[BaseTool]:
-        """Return the tools available to this agent."""
-        return [web_search, summarize_content, extract_information, analyze_topic]
+        """
+        Return the tools available to this agent.
+        """
+        return [get_aircraft_location, get_flights_by_aircraft, parse_human_date_to_timestamp]
 
     def _create_agent_executor(self):
         """Create the agent executor with tools - simplified version."""
@@ -70,7 +77,7 @@ class ResearchAgent(BaseAgent):
 
     def execute(self, state: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Execute the research task with actual tool execution.
+        Execute the airplane tracking task with actual tool execution.
 
         Args:
             state: Current agent state containing user input
@@ -78,6 +85,7 @@ class ResearchAgent(BaseAgent):
         Returns:
             Dict with updated state including agent output
         """
+
         try:
             user_input = state.get("user_input", "")
             conversation_history = state.get("messages", [])
@@ -97,11 +105,11 @@ class ResearchAgent(BaseAgent):
 
             # System message
             system_msg = (
-                "You are a Research Agent. Use the available tools to research and answer the user's question. "
-                "You can use web search, content summarization, information extraction, and topic analysis. "
+                "You are an Airplane Tracker Agent. Use the available tools to research and answer the user's question. "
+                "You can use get_aircraft_location, get_flights_by_aircraft. "
+                "Can parse human inputted datetime into timestamp by parse_human_date_to_timestamp"
                 "Consider the conversation history to understand the context of the user's question."
             )
-
             # Build messages with conversation history
             messages = [{"role": "system", "content": system_msg}]
 
@@ -123,7 +131,7 @@ class ResearchAgent(BaseAgent):
                 # Check if there are tool calls
                 if not hasattr(response, 'tool_calls') or not response.tool_calls:
                     # No more tool calls, return the final response
-                    output = response.content if response.content else "Research completed."
+                    output = response.content if response.content else "Tracking completed."
                     return {
                         "agent_output": output,
                         "current_agent": self.name,
@@ -164,10 +172,10 @@ class ResearchAgent(BaseAgent):
                 "agent_output": "Research execution reached maximum iterations. Please try breaking down your question.",
                 "current_agent": self.name
             }
-
+        
         except Exception as e:
             return {
-                "agent_output": f"Error in Research Agent: {str(e)}",
+                "agent_output": f"Error in Airplane Tracker Agent: {str(e)}",
                 "current_agent": self.name
             }
 
@@ -182,8 +190,8 @@ class ResearchAgent(BaseAgent):
             Confidence score between 0 and 1
         """
         research_keywords = [
-            "search", "research", "find", "information", "analyze", "summarize",
-            "topic", "web", "look up", "investigate", "study"
+            "airplane", "aircraft", "find airplane", "airport",
+            "flights"
         ]
 
         request_lower = request.lower()

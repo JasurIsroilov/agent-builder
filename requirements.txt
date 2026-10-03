@@ -9,6 +9,7 @@ charset-normalizer==3.5.1
 click==8.5.0
 cryptography==50.0.1
 distro==1.9.0
+duckduckgo_search==8.1.1
 fastapi==0.141.1
 h11==0.16.0
 html5lib==1.1
@@ -45,6 +46,7 @@ opentelemetry-api==1.45.0
 orjson==3.12.0
 ormsgpack==1.12.2
 packaging==26.3
+primp==2.0.1
 Protego==0.7.0
 pycparser==3.0
 pydantic==2.13.5

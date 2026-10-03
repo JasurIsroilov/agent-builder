@@ -173,6 +173,11 @@ Provides weather information via MCP server integration (demonstrates external t
 
 **Capabilities**: Dynamically loaded from MCP server (current weather, forecasts, air quality, timezone info, etc.)
 
+### 4. AirplaneTrackerAgent
+Trackes airplanes by using OpenSkyAPI
+
+**Capabilities**: get_flights_by_aircraft, parse_human_date_to_timestamp, get_aircraft_location
+
 
 
 ---

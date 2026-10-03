@@ -25,7 +25,7 @@ class FileOperationsAgent(BaseAgent):
 
     def __init__(self):
         """Initialize the File Operations Agent."""
-        self.llm = ChatOpenAI(model="gpt-4o", temperature=0)
+        self.llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
         self.agent_executor = None
         super().__init__()
 

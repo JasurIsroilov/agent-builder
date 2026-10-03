@@ -106,7 +106,7 @@ def main():
     print("\n🔧 Initializing multi-agent system...")
 
     try:
-        supervisor = SupervisorWorkflow(model="gpt-4o")
+        supervisor = SupervisorWorkflow(model="gpt-4o-mini")
         app = supervisor.build()
     except Exception as e:
         print(f"\n❌ Error initializing system: {e}")

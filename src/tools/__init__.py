@@ -17,6 +17,9 @@ from .research_tools import (
     extract_information,
     analyze_topic
 )
+from .airplane_tracker_tools import (
+    get_aircraft_location
+)
 
 __all__ = [
     "read_file",
@@ -27,5 +30,6 @@ __all__ = [
     "web_search",
     "summarize_content",
     "extract_information",
-    "analyze_topic"
+    "analyze_topic",
+    "get_aircraft_location"
 ]

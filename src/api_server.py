@@ -83,7 +83,7 @@ async def startup_event():
     print("\n🔧 Initializing multi-agent system...")
 
     try:
-        supervisor = SupervisorWorkflow(model="gpt-4o")
+        supervisor = SupervisorWorkflow(model="gpt-4o-mini")
         app_instance = supervisor.build()
         print("✅ Multi-agent system ready!")
 
