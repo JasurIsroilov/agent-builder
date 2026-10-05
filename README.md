@@ -178,8 +178,10 @@ Trackes airplanes by using OpenSkyAPI
 
 **Capabilities**: get_flights_by_aircraft, parse_human_date_to_timestamp, get_aircraft_location
 
+### 5. RAGDiplomaAgent
+Retrieves information about my diploma project and answers the questions.
 
+**Capabilities**: retrieve_diploma_information
 
 ---
 
-**Built with LangChain & LangGraph 🤖**

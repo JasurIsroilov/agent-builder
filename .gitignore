@@ -74,6 +74,7 @@ age.txt
 name.txt
 
 docs/
+tmp/
 set_envs.sh
 .claude
 

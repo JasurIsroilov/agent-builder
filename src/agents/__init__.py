@@ -10,5 +10,6 @@ from .file_operations_agent import FileOperationsAgent
 from .research_agent import ResearchAgent
 from .weather_agent import WeatherAgent
 from .airplane_trackes_agent import AirplaneTrackerAgent
+from .rag_diploma_agent import RAGDiplomaAgent
 
-__all__ = ["FileOperationsAgent", "ResearchAgent", "WeatherAgent", "AirplaneTrackerAgent"]
+__all__ = ["FileOperationsAgent", "ResearchAgent", "WeatherAgent", "AirplaneTrackerAgent", "RAGDiplomaAgent"]

@@ -18,7 +18,12 @@ from .research_tools import (
     analyze_topic
 )
 from .airplane_tracker_tools import (
-    get_aircraft_location
+    get_aircraft_location,
+    parse_human_date_to_timestamp,
+    get_flights_by_aircraft
+)
+from .rag_diploma_tools import (
+    retrieve_diploma_information
 )
 
 __all__ = [
@@ -31,5 +36,8 @@ __all__ = [
     "summarize_content",
     "extract_information",
     "analyze_topic",
-    "get_aircraft_location"
+    "get_aircraft_location",
+    "parse_human_date_to_timestamp",
+    "get_flights_by_aircraft",
+    "retrieve_diploma_information"
 ]
