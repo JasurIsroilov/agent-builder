@@ -9,12 +9,16 @@ from langchain.tools import tool
 from langchain_openai import ChatOpenAI
 import os
 
+from utils.permissions_enum import UserPermissions
+from utils.tool_permissions_decorator import tool_permission
+
 
 # Initialize LLM for summarization tasks
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
 
 
 @tool
+@tool_permission(UserPermissions.SEARCH_WEB)
 def web_search(query: str, max_results: int = 5) -> str:
     """
     Search the web for information.
@@ -69,6 +73,7 @@ def web_search(query: str, max_results: int = 5) -> str:
 
 
 @tool
+@tool_permission(UserPermissions.SUMMARIZE_CONTENT)
 def summarize_content(content: str, max_length: int = 200) -> str:
     """
     Summarize long text content into a concise summary.
@@ -110,6 +115,7 @@ Summary:"""
 
 
 @tool
+@tool_permission(UserPermissions.EXTRACT_INFORMATION)
 def extract_information(content: str, query: str) -> str:
     """
     Extract specific information from content based on a query.
@@ -154,6 +160,7 @@ Extracted Information:"""
 
 
 @tool
+@tool_permission(UserPermissions.ANALYZE_TOPIC)
 def analyze_topic(topic: str) -> str:
     """
     Get a comprehensive analysis of a topic.

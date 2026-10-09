@@ -185,3 +185,9 @@ Retrieves information about my diploma project and answers the questions.
 
 ---
 
+## Security Compliance
+
+Implemented custom decorator for user permissions to tools: 
+```python
+@tool_permission(required_permission=UserPermissions.READ_FILE)
+```

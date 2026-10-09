@@ -13,6 +13,9 @@ import requests
 from typing import TypedDict
 from datetime import datetime, timezone
 
+from utils.tool_permissions_decorator import tool_permission
+from utils.permissions_enum import UserPermissions
+
 
 opensky_api = OpenSkyApi()
 
@@ -29,6 +32,7 @@ def get_city_details_by_coordinates(longitude: float, latitude: float):
 
 
 @tool
+@tool_permission(required_permission=UserPermissions.GET_AIRCRAFT_LOCATION)
 def get_aircraft_location(aircraft_address: str) -> str:
 
     """
@@ -113,6 +117,7 @@ def parse_human_date_to_timestamp(
 
 
 @tool
+@tool_permission(required_permission=UserPermissions.GET_AIRCRAFT_FLIGHTS)
 def get_flights_by_aircraft(aircraft_address: str,  begin: int, end: int) -> str:
 
     """

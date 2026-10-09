@@ -10,8 +10,12 @@ from pathlib import Path
 from typing import List
 from langchain.tools import tool
 
+from utils.tool_permissions_decorator import tool_permission
+from utils.permissions_enum import UserPermissions
+
 
 @tool
+@tool_permission(UserPermissions.READ_FILE)
 def read_file(filepath: str) -> str:
     """
     Read the contents of a file.
@@ -49,6 +53,7 @@ def read_file(filepath: str) -> str:
 
 
 @tool
+@tool_permission(UserPermissions.CREATE_FILE)
 def write_file(filepath: str, content: str) -> str:
     """
     Write content to a file.
@@ -84,6 +89,7 @@ def write_file(filepath: str, content: str) -> str:
 
 
 @tool
+@tool_permission(UserPermissions.READ_FILE)
 def list_files(directory: str = ".") -> str:
     """
     List all files and directories in a given directory.
@@ -139,6 +145,7 @@ def list_files(directory: str = ".") -> str:
 
 
 @tool
+@tool_permission(UserPermissions.DELETE_FILE)
 def delete_file(filepath: str) -> str:
     """
     Delete a file.
@@ -174,6 +181,7 @@ def delete_file(filepath: str) -> str:
 
 
 @tool
+@tool_permission(UserPermissions.UPDATE_FILE)
 def append_to_file(filepath: str, content: str) -> str:
     """
     Append content to an existing file.

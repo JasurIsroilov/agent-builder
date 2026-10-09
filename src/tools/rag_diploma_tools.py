@@ -8,8 +8,12 @@ from langchain.tools import tool
 
 from embeddings.rag_diploma_embeddings import rag_diploma_retriever
 
+from utils.tool_permissions_decorator import tool_permission
+from utils.permissions_enum import UserPermissions
+
 
 @tool
+@tool_permission(UserPermissions.READ_DIPLOMA_INFORMATION)
 def retrieve_diploma_information(query: str) -> str:
     """
     This tool searches and returns the information from the diploma document.
